@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  php-fpm:
+    image: maxdeveloper/php-72-fpm-xdebug
+    volumes:
+      - ./:/var/www/blog
+
+  nginx:
+    image: maxdeveloper/nginx
+    depends_on:
+      - php-fpm
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/blog
+      - ./docker-nginx-sites.ini:/docker-nginx-sites.ini

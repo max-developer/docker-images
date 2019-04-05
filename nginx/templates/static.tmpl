@@ -1,0 +1,25 @@
+server {
+
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    server_name {{HOST}};
+    root /var/www/{{ROOT}};
+    index index.html index.htm;
+
+    location / {
+         try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/letsencrypt/;
+        log_not_found off;
+    }
+
+    error_log /var/log/nginx/{{HOST}}_error.log;
+    access_log /var/log/nginx/{{HOST}}_access.log;
+}
