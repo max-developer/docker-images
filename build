@@ -1,0 +1,12 @@
+
+docker build -t maxdeveloper/php-72-cli ./php-72-cli
+docker build -t maxdeveloper/php-72-cli-xdebug ./php-72-cli-xdebug
+docker build -t maxdeveloper/php-72-composer ./php-72-composer
+docker build -t maxdeveloper/php-72-fpm ./php-72-fpm
+docker build --build-arg XDEBUG=-xdebug -t maxdeveloper/php-72-fpm-xdebug ./php-72-fpm
+
+docker push maxdeveloper/php-72-cli
+docker push maxdeveloper/php-72-cli-xdebug
+docker push maxdeveloper/php-72-composer
+docker push maxdeveloper/php-72-fpm
+docker push maxdeveloper/php-72-fpm-xdebug
